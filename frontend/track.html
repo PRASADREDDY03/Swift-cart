@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Cart | Live Tracking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Liquid Cursor Elements -->
+    <div id="cursor-follower"></div>
+    <div id="liquid-cursor-container"></div>
+    <svg style="position: absolute; width: 0; height: 0;" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="gooey">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="gooey" />
+                <feComposite in="SourceGraphic" in2="gooey" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Top Navigation Header -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <a href="index.html" class="brand-logo">
+                swift<span>cart</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="tracker-container" id="tracking-container">
+            <h2 style="text-align: center; margin-bottom: 1rem; color: #111;">Order Dispatched</h2>
+            <div id="status-text" class="status-text" style="color: var(--brand-primary); font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">Initializing tracking...</div>
+            
+            <div class="progress-track" style="background: #E2E8F0; border-radius: 999px; height: 12px; margin-bottom: 1rem; position: relative; overflow: hidden;">
+                <div id="progress-fill" class="progress-fill" style="position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--brand-primary); transition: width 1s linear;"></div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                <div style="color: var(--text-muted); font-weight: 600;">ETA</div>
+                <div id="eta-display" style="font-size: 2rem; font-weight: 800; color: var(--success);">--</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support FAB -->
+    <button id="support-fab" class="support-fab">
+        <div class="badge"></div>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="chat-window light-chat">
+        <div class="chat-header">
+            <span>Support Pilot</span>
+            <button id="close-chat" style="background:none;border:none;color:white;cursor:pointer;">&times;</button>
+        </div>
+        <div class="chat-body" id="chat-body">
+            <div class="msg bot">I am the Swift Cart Support Pilot. How can I help you?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-msg-input" placeholder="Type a message...">
+            <button id="send-msg">Send</button>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
